@@ -8,5 +8,5 @@ import org.springframework.context.annotation.Import;
 @ComponentScan(basePackages = "com.cenihub")
 @Import({DatabaseConfig.class, JpaConfig.class})
 public class AppConfig {
-    // Main configuration class that imports other configs
+
 }
