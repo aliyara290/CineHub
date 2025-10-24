@@ -14,18 +14,20 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com.cenihub.repository")
+@EnableJpaRepositories(
+        basePackages = "com.cenihub.repository",
+        entityManagerFactoryRef = "entityManagerFactory",
+        transactionManagerRef = "transactionManager"
+)
 public class JpaConfig {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-
         em.setDataSource(dataSource);
         em.setPackagesToScan("com.cenihub.model");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         em.setJpaProperties(hibernateProperties());
-
         return em;
     }
 
@@ -38,12 +40,11 @@ public class JpaConfig {
 
     private Properties hibernateProperties() {
         Properties properties = new Properties();
-
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         properties.setProperty("hibernate.hbm2ddl.auto", "update");
         properties.setProperty("hibernate.show_sql", "true");
         properties.setProperty("hibernate.format_sql", "true");
-
+        properties.setProperty("hibernate.jdbc.lob.non_contextual_creation", "true");
         return properties;
     }
 }
