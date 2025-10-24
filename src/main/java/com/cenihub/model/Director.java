@@ -28,7 +28,7 @@ public class Director {
     @Column(name = "birth_year")
     private Integer birthYear;
 
-    @OneToMany(mappedBy = "director", cascade = CascadeType.ALL)
-    @ToString.Exclude
-    private List<Film> films = new ArrayList<>();
+//    @OneToMany(mappedBy = "director", cascade = CascadeType.ALL)
+//    @ToString.Exclude
+//    private List<Film> films = new ArrayList<>();
 }

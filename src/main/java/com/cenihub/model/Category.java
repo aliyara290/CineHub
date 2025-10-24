@@ -31,9 +31,9 @@ public class Category {
     @Column(length = 500)
     private String description;
 
-    @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
-    @Builder.Default
-    private Set<Film> films = new HashSet<>();
+//    @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
+//    @Builder.Default
+//    private Set<Film> films = new HashSet<>();
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
