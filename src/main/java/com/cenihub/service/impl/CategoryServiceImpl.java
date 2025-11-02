@@ -77,6 +77,7 @@ public class CategoryServiceImpl implements CategoryService {
                 .orElseThrow(RecordNotFound::new);
         categoryRepository.delete(category);
     }
+
     @Override
     public boolean existsByName(String name) {
         return categoryRepository.existsByName(name);
