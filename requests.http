@@ -1,0 +1,404 @@
+###
+@baseUrl = http://localhost:8080/
+@contentType = application/json
+
+###############################################################################
+### CATEGORY ENDPOINTS
+###############################################################################
+
+### 1. Create Category - Action
+POST {{baseUrl}}/api/categories
+Content-Type: {{contentType}}
+
+{
+  "name": "Action",
+  "description": "High-octane action films with thrilling sequences"
+}
+
+### 2. Create Category - Drama
+POST {{baseUrl}}/api/categories
+Content-Type: {{contentType}}
+
+{
+  "name": "Drama",
+  "description": "Emotional and thought-provoking films"
+}
+
+### 3. Create Category - Sci-Fi
+POST {{baseUrl}}/api/categories
+Content-Type: {{contentType}}
+
+{
+  "name": "Sci-Fi",
+  "description": "Science fiction and futuristic themes"
+}
+
+### 4. Create Category - Comedy
+POST {{baseUrl}}/api/categories
+Content-Type: {{contentType}}
+
+{
+  "name": "Comedy",
+  "description": "Funny and entertaining movies"
+}
+
+### 5. Create Category - Horror
+POST {{baseUrl}}/api/categories
+Content-Type: {{contentType}}
+
+{
+  "name": "Horror",
+  "description": "Scary and suspenseful films"
+}
+
+### 5. Create Category - Ali
+POST {{baseUrl}}/api/categories
+Content-Type: {{contentType}}
+
+{
+  "name": "Ali",
+  "description": "Ali yarraaaaa"
+}
+
+
+### 6. Get All Categories
+GET {{baseUrl}}/api/categories
+
+### 7. Get Category by ID (Update ID as needed)
+GET {{baseUrl}}/api/categories/6
+
+### 8. Update Category
+PUT {{baseUrl}}/api/categories/1
+Content-Type: {{contentType}}
+
+{
+  "name": "Action & Adventure",
+  "description": "Action-packed films with adventure elements"
+}
+
+### 9. Delete Category
+DELETE {{baseUrl}}/api/categories/5
+
+###############################################################################
+### DIRECTOR ENDPOINTS
+###############################################################################
+
+### 10. Create Director - Christopher Nolan
+POST {{baseUrl}}/api/directors
+Content-Type: {{contentType}}
+
+{
+  "name": "Christopher Nolan",
+  "nationality": "British-American",
+  "birthYear": 1970
+}
+
+### 11. Create Director - Quentin Tarantino
+POST {{baseUrl}}/api/directors
+Content-Type: {{contentType}}
+
+{
+  "name": "Quentin Tarantino",
+  "nationality": "American",
+  "birthYear": 1963
+}
+
+### 12. Create Director - Denis Villeneuve
+POST {{baseUrl}}/api/directors
+Content-Type: {{contentType}}
+
+{
+  "name": "Denis Villeneuve",
+  "nationality": "Canadian",
+  "birthYear": 1967
+}
+
+### 13. Create Director - Steven Spielberg
+POST {{baseUrl}}/api/directors
+Content-Type: {{contentType}}
+
+{
+  "name": "Steven Spielberg",
+  "nationality": "American",
+  "birthYear": 1946
+}
+
+### 14. Create Director - Martin Scorsese
+POST {{baseUrl}}/api/directors
+Content-Type: {{contentType}}
+
+{
+  "name": "Martin Scorsese",
+  "nationality": "American",
+  "birthYear": 1942
+}
+
+### 14. Create Director - Martin Scorsese
+POST {{baseUrl}}/api/directors
+Content-Type: {{contentType}}
+
+{
+  "name": "Allll",
+  "nationality": "jhcbnd",
+  "birthYear": 1942
+}
+
+### 15. Get All Directors
+GET {{baseUrl}}/api/directors
+
+### 16. Get Director by ID
+GET {{baseUrl}}/api/directors/1
+
+### 17. Search Director by Name
+GET {{baseUrl}}/api/directors/search?name=Christopher Nolan
+
+### 18. Get Directors by Nationality
+GET {{baseUrl}}/api/directors/nationality/American
+
+### 19. Update Director
+PUT {{baseUrl}}/api/directors/1
+Content-Type: {{contentType}}
+
+{
+  "name": "Christopher Nolan",
+  "nationality": "British-American",
+  "birthYear": 1970
+}
+
+### 20. Delete Director
+DELETE {{baseUrl}}/api/directors/5
+
+###############################################################################
+### FILM ENDPOINTS
+###############################################################################
+
+### 21. Create Film - Inception
+POST {{baseUrl}}/api/films
+Content-Type: {{contentType}}
+
+{
+  "title": "Inception",
+  "releaseYear": "2010-07-16",
+  "duration": 148,
+  "synopsis": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+  "rating": 8.8,
+  "directorId": 1,
+  "categoryId": 3
+}
+
+### 22. Create Film - The Dark Knight
+POST {{baseUrl}}/api/films
+Content-Type: {{contentType}}
+
+{
+  "title": "The Dark Knight",
+  "releaseYear": "2008-07-18",
+  "duration": 152,
+  "synopsis": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+  "rating": 9.0,
+  "directorId": 1,
+  "categoryId": 1
+}
+
+### 23. Create Film - Pulp Fiction
+
+POST {{baseUrl}}/api/films
+Content-Type: {{contentType}}
+
+{
+  "title": "No body",
+  "releaseYear": "2008-07-18",
+  "duration": 152,
+  "synopsis": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+  "rating": 8.0,
+  "directorId": 3,
+  "categoryId": 5
+}
+
+### 23. Create Film - Pulp Fiction
+POST {{baseUrl}}/api/films
+Content-Type: {{contentType}}
+
+{
+  "title": "Pulp Fiction",
+  "releaseYear": "1994-10-14",
+  "duration": 154,
+  "synopsis": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+  "rating": 8.9,
+  "directorId": 2,
+  "categoryId": 2
+}
+
+### 24. Create Film - Dune
+POST {{baseUrl}}/api/films
+Content-Type: {{contentType}}
+
+{
+  "title": "Dune",
+  "releaseYear": "2021-10-22",
+  "duration": 155,
+  "synopsis": "Feature adaptation of Frank Herbert's science fiction novel about the son of a noble family entrusted with the protection of the most valuable asset and most vital element in the galaxy.",
+  "rating": 8.0,
+  "directorId": 3,
+  "categoryId": 3
+}
+
+### 25. Create Film - Blade Runner 2049
+POST {{baseUrl}}/api/films
+Content-Type: {{contentType}}
+
+{
+  "title": "Blade Runner 2049",
+  "releaseYear": "2017-10-06",
+  "duration": 164,
+  "synopsis": "Young Blade Runner K's discovery of a long-buried secret leads him to track down former Blade Runner Rick Deckard, who's been missing for thirty years.",
+  "rating": 8.0,
+  "directorId": 3,
+  "categoryId": 3
+}
+
+### 26. Create Film - Interstellar
+POST {{baseUrl}}/api/films
+Content-Type: {{contentType}}
+
+{
+  "title": "Interstellar",
+  "releaseYear": "2014-11-07",
+  "duration": 169,
+  "synopsis": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+  "rating": 8.6,
+  "directorId": 1,
+  "categoryId": 3
+}
+
+### 27. Get All Films
+GET {{baseUrl}}/api/films
+
+### 28. Get Film by ID (Update ID as needed)
+GET {{baseUrl}}/api/films/{{filmId}}
+
+### 29. Get Films by Director
+GET {{baseUrl}}/api/films/director/1
+
+### 30. Get Films by Category
+GET {{baseUrl}}/api/films/category/3
+
+### 31. Update Film
+PUT {{baseUrl}}/api/films/{{filmId}}
+Content-Type: {{contentType}}
+
+{
+  "title": "Inception - Extended Edition",
+  "releaseYear": "2010-07-16",
+  "duration": 160,
+  "synopsis": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O. Extended with deleted scenes.",
+  "rating": 9.0,
+  "directorId": 1,
+  "categoryId": 3
+}
+
+### 32. Delete Film
+DELETE {{baseUrl}}/api/films/{{filmId}}
+
+###############################################################################
+### VALIDATION TESTS (Should return 400 Bad Request)
+###############################################################################
+
+### 33. Create Category - Missing Name (Invalid)
+POST {{baseUrl}}/api/categories
+Content-Type: {{contentType}}
+
+{
+  "description": "This should fail - no name provided"
+}
+
+### 34. Create Category - Name Too Short (Invalid)
+POST {{baseUrl}}/api/categories
+Content-Type: {{contentType}}
+
+{
+  "name": "A",
+  "description": "Name too short - should fail"
+}
+
+### 35. Create Director - Invalid Birth Year (Invalid)
+POST {{baseUrl}}/api/directors
+Content-Type: {{contentType}}
+
+{
+  "name": "Test Director",
+  "nationality": "American",
+  "birthYear": 1800
+}
+
+### 36. Create Film - Missing Required Fields (Invalid)
+POST {{baseUrl}}/api/films
+Content-Type: {{contentType}}
+
+{
+  "title": "Incomplete Film"
+}
+
+### 37. Create Film - Invalid Rating (Invalid)
+POST {{baseUrl}}/api/films
+Content-Type: {{contentType}}
+
+{
+  "title": "Bad Rating Film",
+  "releaseYear": "2023-01-01",
+  "duration": 120,
+  "synopsis": "This film has an invalid rating",
+  "rating": 15.0,
+  "directorId": 1,
+  "categoryId": 1
+}
+
+###############################################################################
+### ERROR HANDLING TESTS
+###############################################################################
+
+### 38. Get Non-Existent Category (Should return 404)
+GET {{baseUrl}}/api/categories/999
+
+### 39. Get Non-Existent Director (Should return 404)
+GET {{baseUrl}}/api/directors/999
+
+### 40. Get Non-Existent Film (Should return 404)
+GET {{baseUrl}}/api/films/00000000-0000-0000-0000-000000000000
+
+### 41. Create Duplicate Category (Should fail)
+POST {{baseUrl}}/api/categories
+Content-Type: {{contentType}}
+
+{
+  "name": "Action",
+  "description": "This should fail - duplicate name"
+}
+
+### 42. Delete Non-Existent Category (Should return 404)
+DELETE {{baseUrl}}/api/categories/999
+
+### 4
+GET {{baseUrl}}/api/categories
+
+###
+GET {{baseUrl}}/api/directors
+
+###
+GET {{baseUrl}}/api/films
+
+### 44. Get Christopher Nolan's Films
+GET {{baseUrl}}/api/directors/search?name=Christopher Nolan
+
+###
+GET {{baseUrl}}/api/films/director/1
+
+### 45. Get All Sci-Fi Films
+GET {{baseUrl}}/api/categories
+
+###
+GET {{baseUrl}}/api/films/category/3
+
+
+###
+GET {{baseUrl}}/api/films/search?name=Denis Villeneuve

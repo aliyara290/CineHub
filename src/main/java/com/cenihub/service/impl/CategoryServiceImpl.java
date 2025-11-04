@@ -3,7 +3,6 @@ package com.cenihub.service.impl;
 import com.cenihub.dto.request.CategoryRequestDTO;
 import com.cenihub.dto.response.CategoryResponseDTO;
 import com.cenihub.exception.DuplicateResourceException;
-import com.cenihub.exception.FailedToDeleteException;
 import com.cenihub.exception.FailedToInsertToDb;
 import com.cenihub.exception.RecordNotFound;
 import com.cenihub.mapper.CategoryMapper;
@@ -27,7 +26,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryResponseDTO createCategory(CategoryRequestDTO requestDTO) {
         if (existsByName(requestDTO.getName())) {
-            throw new DuplicateResourceException("Category with name " + requestDTO.getName() + "already exist!");
+            throw new DuplicateResourceException("Category with name " + requestDTO.getName() + " already exists!");
         }
         try {
             Category category = categoryMapper.toEntity(requestDTO);
@@ -40,41 +39,38 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryResponseDTO getCategoryById(Long id) {
-        try {
-            Category category = categoryRepository.findById(id).orElseThrow(RecordNotFound::new);
-            return categoryMapper.toResponseDTO(category);
-        } catch (Exception ex) {
-            throw new RecordNotFound();
-        }
+        Category category = categoryRepository.findById(id)
+                .orElseThrow(() -> new RecordNotFound());
+        return categoryMapper.toResponseDTO(category);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<CategoryResponseDTO> getAllCategories() {
-        try {
-            return categoryRepository.findAll().stream().map(categoryMapper::toResponseDTO).collect(Collectors.toList());
-        } catch (Exception ex) {
-            throw new RecordNotFound();
-        }
+        return categoryRepository.findAll()
+                .stream()
+                .map(categoryMapper::toResponseDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
     public CategoryResponseDTO updateCategory(Long id, CategoryRequestDTO requestDTO) {
-        if(existsById(id)) {
-            throw new RecordNotFound();
+        Category category = categoryRepository.findById(id)
+                .orElseThrow(() -> new RecordNotFound());
+
+        if (!category.getName().equals(requestDTO.getName()) && existsByName(requestDTO.getName())) {
+            throw new DuplicateResourceException("Category with name " + requestDTO.getName() + " already exists!");
         }
-        try {
-            Category category = categoryMapper.toEntity(requestDTO);
-            Category updatedCategory = categoryRepository.save(category);
-            return categoryMapper.toResponseDTO(updatedCategory);
-        } catch (Exception ex) {
-            throw new FailedToInsertToDb(ex.getCause());
-        }
+
+        categoryMapper.updateEntityFromDTO(requestDTO, category);
+        Category updatedCategory = categoryRepository.save(category);
+        return categoryMapper.toResponseDTO(updatedCategory);
     }
 
     @Override
     public void deleteCategory(Long id) {
         Category category = categoryRepository.findById(id)
-                .orElseThrow(RecordNotFound::new);
+                .orElseThrow(() -> new RecordNotFound());
         categoryRepository.delete(category);
     }
 

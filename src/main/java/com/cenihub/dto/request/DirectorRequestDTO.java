@@ -1,6 +1,13 @@
 package com.cenihub.dto.request;
 
 import jakarta.validation.constraints.*;
+import lombok.*;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class DirectorRequestDTO {
 
     @NotBlank(message = "Name is required")

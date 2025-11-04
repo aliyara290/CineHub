@@ -1,18 +1,16 @@
 package com.cenihub.service.interfaces;
 
 import com.cenihub.dto.request.DirectorRequestDTO;
-import com.cenihub.model.Director;
+import com.cenihub.dto.response.DirectorResponseDTO;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface DirectorService {
-
-    Director createDirector(DirectorRequestDTO directorRequestDTO);
-    List<Director> getAllDirectors();
-    Optional<Director> getDirectorById(Long id);
-    Optional<Director> getDirectorByName(String name);
-    List<Director> getDirectorsByNationality(String nationality);
-    Director updateDirector(Long id, DirectorRequestDTO directorRequestDTO);
+    DirectorResponseDTO createDirector(DirectorRequestDTO requestDTO);
+    List<DirectorResponseDTO> getAllDirectors();
+    DirectorResponseDTO getDirectorById(Long id);
+    DirectorResponseDTO getDirectorByName(String name);
+    List<DirectorResponseDTO> getDirectorsByNationality(String nationality);
+    DirectorResponseDTO updateDirector(Long id, DirectorRequestDTO requestDTO);
     void deleteDirector(Long id);
 }
